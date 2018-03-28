@@ -15,12 +15,12 @@ Look at the schematics for more informations.
 
 # Schematic  
 
-<img src="https://github.com/hallard/WeMos-TIC/master/pictures/WeMos-TIC-sch.png">
-
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-sch.png">
+https://raw.githubusercontent.com/hallard/WeMos-TIC/master/pictures/WeMos-TIC-sch.png
 # Boards  
 
-<img src="https://https://github.com/hallard/WeMos-TIC/master/pictures/WeMos-TIC-top.png" alt="Top" width="40%" height="40%">&nbsp;
-<img src="https://https://github.com/hallard/WeMos-TIC/master/pictures/WeMos-TIC--bot.png" alt="Bottom" width="40%" height="40%">
+<img src="https://https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-top.png" alt="Top" width="40%" height="40%">&nbsp;
+<img src="https://https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC--bot.png" alt="Bottom" width="40%" height="40%">
 
 You can order the PCB of this board at [PCBs.io][4]. PCBs.io give me some reward when you order my designed boards from their site. This is pretty good, because I can use these rewards to create and design new boards and order them for free, so if you don't care about PCB manufacturer please use PCBs.io.
 
