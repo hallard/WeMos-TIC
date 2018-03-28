@@ -1,11 +1,16 @@
-# Basic ESP8266 WeMos Teleinfo Shield
+# Basic WeMos ESP8266 WeMos Teleinfo Shield
 
-This shield is used to get French energy meter called Teleinfo data with an ESP8266, it has just few minimal features.
+This shield is used to get French energy meter called Teleinfo data with an [WeMos][22] ESP8266.
+
+it has just few minimal features.
+
 - Teleinfo Reader interface
 - I2C Pullups placement
 - Footprint for WS2812B RGB LED
 - Classic I2C 128x64 OLED or sensors connector (with PAD to reverse 3V3 and GND if needed)
 - pad to solder components if needed to
+
+WeMos provide 3 D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini Pro][22].
 
 **Boards are tested from [PCBs.io][4], all works as expected**
 
@@ -39,7 +44,9 @@ If you want to do commercial stuff with this project, please contact [CH2i compa
 
 See news and other projects on my [blog][2] 
  
-[1]: http://www.wemos.cc/wiki/doku.php?id=en:d1_mini
 [2]: https://hallard.me
 [4]: https://PCBs.io/share/8gb6y
 
+[20]: https://wiki.wemos.cc/products:d1:d1_mini_lite
+[21]: https://wiki.wemos.cc/products:d1:d1_mini
+[22]: https://wiki.wemos.cc/products:d1:d1_mini_pro
