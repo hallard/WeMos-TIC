@@ -1,4 +1,4 @@
-# Basic WeMos ESP8266/ESP32 Teleinfo Shield (aka TIC)
+# Basic WeMos ESP8266/ESP32 Teleinfo Shield
 
 This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or MH et Live ESP32 Mini Kit.
 
@@ -10,6 +10,7 @@ it has just few minimal features.
 - Reduded WS2812 RGB Led size
 - Added visual LED on teleinfo receive signal
 - Reverted Signal 3V3 and GND on I2C connector now "standard" looks more like that
+- Replaced 2 GND pins by 5V and 3.3V to get more external power pins
 
 **v1.0**
 
@@ -31,14 +32,14 @@ Look at the schematics for more informations.
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-sch.png">
 
-# Boards  
+# Boards (V1.0)
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-top.png" alt="Top" width="40%" height="40%">&nbsp;
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-bot.png" alt="Bottom" width="40%" height="40%">
 
 You can order the PCB of this board at [PCBs.io][4]. PCBs.io give me some reward when you order my designed boards from their site. This is pretty good, because I can use these rewards to create and design new boards and order them for free, so if you don't care about PCB manufacturer please use PCBs.io.
 
-# Assembled boards
+# Assembled boards (V1.0)
 
 Here boards one connected to WeMos D1 mini (right) and other on MH ET Live ESP32 Mini Kit (left)
 
