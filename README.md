@@ -1,8 +1,17 @@
-# Basic WeMos ESP8266 WeMos Teleinfo Shield
+# Basic WeMos ESP8266/ESP32 Teleinfo Shield (aka TIC)
 
-This shield is used to get French energy meter called Teleinfo data with an [WeMos][22] ESP8266.
+This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or MH et Live ESP32 Mini Kit.
 
 it has just few minimal features.
+
+**New in v1.1**
+
+- Default RX goes to GPIO13 on ESP8266 and GPIO23 on ESP32
+- Reduded WS2812 RGB Led size
+- Added visual LED on teleinfo receive signal
+- Reverted Signal 3V3 and GND on I2C connector now "standard" looks more like that
+
+**v1.0**
 
 - Teleinfo Reader interface
 - I2C Pullups placement
@@ -33,7 +42,46 @@ You can order the PCB of this board at [PCBs.io][4]. PCBs.io give me some reward
 
 Here boards one connected to WeMos D1 mini and other on MH ET Live ESP32 Mini Kit
 
-<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-Assembled.png" alt="Top" width="40%" height="40%">&nbsp;
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled.png" alt="Top" width="40%" height="40%">&nbsp;
+
+# Firmware 
+
+## Tasmota
+
+I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firmware. 
+Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/)
+
+## Tasmota templates
+
+Use the following templates depending on version of shield and ESP board
+
+### Shield Version 1.1
+
+Teleinfo RX is on GPIO13 for ESP8266 and GPIO23 on ESP32
+
+ESP8266
+```
+{"NAME":"TICShield","GPIO":[1,1,1,1,640,608,1,1,1,5152,1,1,1,1],"FLAG":0,"BASE":18}
+```
+
+ESP32
+```
+{"NAME":"TICShield32","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,5632,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
+```
+
+### Shield Version 1.0
+
+Teleinfo RX is on GPIO3 for each board
+
+ESP8266
+```
+{"NAME":"TICShield","GPIO":[1,1,1,5152,640,608,1,1,1,1,1376,1,1,1],"FLAG":0,"BASE":18}
+```
+
+ESP32
+```
+{"NAME":"TICShield32","GPIO":[1,1,1,5632,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,1,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
+```
 
 # License
 
@@ -51,4 +99,4 @@ See news and other projects on my [blog][2]
 
 [20]: https://wiki.wemos.cc/products:d1:d1_mini_lite
 [21]: https://wiki.wemos.cc/products:d1:d1_mini
-[22]: https://wiki.wemos.cc/products:d1:d1_mini_pro
+[22]: d1_mini_prohttps://wiki.wemos.cc/products:d1:
