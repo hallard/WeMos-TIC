@@ -40,9 +40,9 @@ You can order the PCB of this board at [PCBs.io][4]. PCBs.io give me some reward
 
 # Assembled boards
 
-Here boards one connected to WeMos D1 mini and other on MH ET Live ESP32 Mini Kit
+Here boards one connected to WeMos D1 mini (right) and other on MH ET Live ESP32 Mini Kit (left)
 
-<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled.png" alt="WeMos Teleinfo Assembled" width="40%" height="40%">&nbsp;
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled.png" alt="WeMos Teleinfo Assembled" width="75%" height="75%">&nbsp;
 
 # Firmware 
 
