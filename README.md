@@ -7,7 +7,7 @@ it has just few minimal features.
 - Teleinfo Reader interface
 - I2C Pullups placement
 - Footprint for WS2812B RGB LED
-- Classic I2C 128x64 OLED or sensors connector (with PAD to reverse 3V3 and GND if needed)
+- Classic I2C 128x64 OLED or sensors connector
 - pad to solder components if needed to
 
 WeMos provide 3 D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini Pro][22].
@@ -31,7 +31,9 @@ You can order the PCB of this board at [PCBs.io][4]. PCBs.io give me some reward
 
 # Assembled boards
 
-TBD
+Here boards one connected to WeMos D1 mini and other on MH ET Live ESP32 Mini Kit
+
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-Assembled.png" alt="Top" width="40%" height="40%">&nbsp;
 
 # License
 
