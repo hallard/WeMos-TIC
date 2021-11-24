@@ -48,8 +48,8 @@ Nothing complicated, just use headers. I suggest to use the small ones I sell wi
 
 Here boards connected to MH ET Live ESP32 Mini Kit
 
-<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-shield.png">&nbsp;
-<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-shield-esp32.png">
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-shield.png" width="40%" height="40%">&nbsp;
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-esp32.png" width="40%" height="40%">
 
 
 # Firmware 
