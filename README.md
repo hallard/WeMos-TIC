@@ -39,8 +39,8 @@ Look at the schematics for more informations.
 
 Here boards connected to MH ET Live ESP32 Mini Kit
 
-<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-top.png" alt="WeMos Teleinfo Assembled TOP">&nbsp;
-<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-bot.png" alt="WeMos Teleinfo Assembled Bottom">
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-top.png" width="40%" height="40%" alt="WeMos Teleinfo Assembled TOP">&nbsp;
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-bot.png" width="40%" height="40%" alt="WeMos Teleinfo Assembled Bottom">
 
 # Assembling
 
