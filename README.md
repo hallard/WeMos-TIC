@@ -2,14 +2,14 @@
 
 This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or MH et Live ESP32 Mini Kit.
 
-it has just few minimal features.
+Since price difference between ESP32 and ESP8266 is so small, to be able to use all future features such as Tamota with TLS or Berry language we strongly suggest to use with ESP32. I, the meanwhile no support for ESP8266 will be provided.
 
 **New in v1.1**
 
 - Default RX goes to GPIO13 on ESP8266 and GPIO23 on ESP32
-- Reduded WS2812 RGB Led size
+- Reduded WS2812 RGB Led size, 4.3V powered, better brigtness 
 - Added visual LED on teleinfo receive signal
-- Reverted Signal 3V3 and GND on I2C connector now "standard" looks more like that
+- Reverted Signal 3V3 and GND on I2C connector, now "standard" looks more like that
 - Replaced 2 GND pins by 5V and 3.3V to get more external power pins
 
 **v1.0**
@@ -22,28 +22,35 @@ it has just few minimal features.
 
 WeMos provide 3 D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini Pro][22].
 
-**Boards are tested from [PCBs.io][4], all works as expected**
-
 # Detailed Description
 
 Look at the schematics for more informations.
 
-# Schematic  
+# Schematics  
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-sch.png">
 
-# Boards (V1.0)
+# Boards (V1.1)
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-top.png" alt="Top" width="40%" height="40%">&nbsp;
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-bot.png" alt="Bottom" width="40%" height="40%">
 
-You can order the PCB of this board at [PCBs.io][4]. PCBs.io give me some reward when you order my designed boards from their site. This is pretty good, because I can use these rewards to create and design new boards and order them for free, so if you don't care about PCB manufacturer please use PCBs.io.
-
 # Assembled boards (V1.0)
 
-Here boards one connected to WeMos D1 mini (right) and other on MH ET Live ESP32 Mini Kit (left)
+Here boards connected to MH ET Live ESP32 Mini Kit
 
-<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled.png" alt="WeMos Teleinfo Assembled">&nbsp;
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-top.png" alt="WeMos Teleinfo Assembled TOP">&nbsp;
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-bot.png" alt="WeMos Teleinfo Assembled Bottom">
+
+# Assembling
+
+Nothing complicated, just use headers. I suggest to use the small ones I sell with shield on Tindie, takes less place and you can either fix for life with just one part of the header soldered on both shield and ESP32.
+
+Here boards connected to MH ET Live ESP32 Mini Kit
+
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-shield.png">&nbsp;
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-shield-esp32.png">
+
 
 # Firmware 
 
@@ -59,15 +66,16 @@ Use the following templates depending on version of shield and ESP board
 ### Shield Version 1.1
 
 Teleinfo RX is on GPIO13 for ESP8266 and GPIO23 on ESP32
+RGB led goes to GPIO14 for ESP8266 and GPIO18 on ESP32
 
 ESP8266
 ```
-{"NAME":"TICShield","GPIO":[1,1,1,1,640,608,1,1,1,5152,1,1,1,1],"FLAG":0,"BASE":18}
+{"NAME":"Wemos Teleinfo","GPIO":[1,1,1,1,640,608,1,1,1,5152,1,1,1,1],"FLAG":0,"BASE":18}
 ```
 
 ESP32
 ```
-{"NAME":"TICShield32","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,5632,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
+{"NAME":"Wemos Teleinfo32","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,5632,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
 
 ### Shield Version 1.0
@@ -96,7 +104,6 @@ If you want to do commercial stuff with this project, please contact [CH2i compa
 See news and other projects on my [blog][2] 
  
 [2]: https://hallard.me
-[4]: https://PCBs.io/share/8gb6y
 
 [20]: https://wiki.wemos.cc/products:d1:d1_mini_lite
 [21]: https://wiki.wemos.cc/products:d1:d1_mini
