@@ -78,7 +78,7 @@ Here boards connected to [ESP32 Mini Dev board][23]
 
 I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firmware. 
 
-Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/)
+Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/) so see how to configure your device depending on smart mater and what options you need.
 
 ### Berry Scripting (ESP32 Only)
 
@@ -86,7 +86,7 @@ Soon you'll be able to personalize code with [Berry language](https://tasmota.gi
 
 You can do that going to Berry console from Tasmota WEB user interface.
 
-As an example, follow is driving on board RGB Led function of Power consumption (low green then going to red when reaching maximum current of your contract)
+Here is a Berry example, goal is to follow real time consumption driving on board RGB Led depending on current Power consumption (low green then going to red when reaching maximum current of your contract)
 
 ```python
 #-
