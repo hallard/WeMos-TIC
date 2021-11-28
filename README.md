@@ -1,8 +1,8 @@
 # Basic WeMos ESP8266/ESP32 Teleinfo Shield
 
-This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or MH et Live ESP32 Mini Kit.
+This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or [MH et Live ESP32 Mini Kit][23]. Take care the check wiring, because there is a lot of clone boards so please be sure to order the correct ones. If you want to be sure you can add it on your Tindie shield order, in bonus it will be flashed with tasmota teleinfo firmware.
 
-Since price difference between ESP32 and ESP8266 is so small, to be able to use all future features such as Tamota with TLS or Berry language we strongly suggest to use with ESP32. I, the meanwhile no support for ESP8266 will be provided.
+Since price difference between ESP32 and ESP8266 boards is so small, to be able to use all future features such as Tamota with TLS, Berry language or even tasmota new applications, I strongly suggest to use with ESP32 only. In the meanwhilen due to lack of ressources and Serial for debug (when using teleinfo), **no support for ESP8266 will be provided**. Of course it works fine, but I spent too much time each time to reproduce and track issues so I let it behind for now to focus on ESP32.  
 
 **New in v1.1**
 
@@ -25,6 +25,24 @@ WeMos provide 3 D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini Pro][22].
 # Detailed Description
 
 Look at the schematics for more informations.
+
+Wiring on the WeMos Teleinfo shield
+
+| Pin Function | ESP32   | ESP8266 |
+|  :---        |  :---:  |  :---:  |
+| Téléinfo Rx  |  GPIO32 | GPIO13  |
+| RGB Led      |  GPIO18 | GPIO14  |
+| I2C SDA      |  GPIO21 | GPIO4   |
+| I2C SDL      |  GPIO22 | GPIO5   |
+| OnBoard LED  |  GPIO22 | GPIO16  |
+
+Default wiring on the ESP8266 Mini D1, ESP32 Mini Dev board
+
+| Pin Function   | ESP32   | ESP8266 |
+|  :---          |  :---:  |  :---:  |
+| OnBoard LED    |  GPIO22 | GPIO16  |
+| OnBoard Button |  GPIO22 | GPIO16  |
+
 
 # Schematics  
 
@@ -65,8 +83,6 @@ Use the following templates depending on version of shield and ESP board
 
 ### Shield Version 1.1
 
-Teleinfo RX is on GPIO13 for ESP8266 and GPIO23 on ESP32
-RGB led goes to GPIO14 for ESP8266 and GPIO18 on ESP32
 
 ESP8266
 ```
@@ -99,6 +115,10 @@ ESP32
 This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/)    
 If you want to do commercial stuff with this project, please contact [CH2i company](https://ch2i.eu/en#support) so we can organize an simple agreement.
 
+# order 
+
+you can order assembled board on [tindie](https://www.tindie.com/products/hallard/wemos-teleinfo/)
+
 # Misc
 
 See news and other projects on my [blog][2] 
@@ -108,3 +128,4 @@ See news and other projects on my [blog][2]
 [20]: https://wiki.wemos.cc/products:d1:d1_mini_lite
 [21]: https://wiki.wemos.cc/products:d1:d1_mini
 [22]: d1_mini_prohttps://wiki.wemos.cc/products:d1:
+[23]: https://www.az-delivery.de/fr/products/esp32-d1-mini
