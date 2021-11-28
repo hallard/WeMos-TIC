@@ -1,8 +1,8 @@
-# Basic WeMos ESP8266/ESP32 Teleinfo Shield
+# WeMos Teleinfo ESP8266/ESP32 Shield
 
 This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or [MH et Live ESP32 Mini Kit][23]. Take care the check wiring, because there is a lot of clone boards so please be sure to order the correct ones. If you want to be sure you can add it as option when you order this shield on [tindie][24], in bonus it will be flashed with tasmota teleinfo firmware.
 
-Since price difference between ESP32 and ESP8266 boards is so small, to be able to use all future features such as Tamota with TLS, Berry language or even tasmota new applications, I strongly suggest to use with ESP32 only. In the meanwhilen due to lack of ressources and Serial for debug (when using teleinfo), **no support for ESP8266 will be provided**. Of course it works fine, but I spent too much time each time to reproduce and track issues so I let it behind for now to focus on ESP32.  
+Since price difference between ESP32 and ESP8266 boards is so small, to be able to use all future features such as Tamota with TLS, [Berry language](https://tasmota.github.io/docs/Berry/) or even tasmota new applications, I strongly suggest to use with ESP32 only. In the meanwhilen due to lack of ressources and Serial for debug (when using teleinfo), **no support for ESP8266 will be provided**. Of course it works fine, but I spent too much time each time to reproduce and track issues so I let it behind for now to focus on ESP32.  
 
 **New in v1.1**
 
@@ -79,6 +79,39 @@ Here boards connected to [ESP32 Mini Dev board][23]
 I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firmware. 
 
 Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/)
+
+### Berry (ESP32 Only)
+
+Soon you'll be able to personalize code with some examples with [Berry language](https://tasmota.github.io/docs/Berry/). Check out some berry sample code [here](https://github.com/arendst/Tasmota/blob/development/tasmota/berry/examples/)
+
+
+For example driving RGB Led function of Power consumption
+
+```berry
+#-
+# example of using Berry script to change the led color
+# accordingly to power consumption
+# using Denky or WeMos Teleinfo (French Teleinfo reader)
+-#
+
+#- define the global symbol for reference -#
+runcolor = nil
+
+def runcolor()
+  var max_contrat = 30 # contrat 30A
+  var i = energy.current
+  #print(i)
+  var red = tasmota.scale_uint(int(i), 0, max_contrat, 0, 255)
+  var green = 255 - red
+  var channels = [red, green, 0]
+  light.set({"channels":channels, "bri":64, "power":true})
+  tasmota.set_timer(2000, runcolor)
+end
+
+#- run animation -#
+runcolor()
+```
+
 
 ## Tasmota templates
 
