@@ -80,12 +80,13 @@ I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firm
 
 Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/)
 
-### Berry (ESP32 Only)
+### Berry Scripting (ESP32 Only)
 
-Soon you'll be able to personalize code with some examples with [Berry language](https://tasmota.github.io/docs/Berry/). Check out some berry sample code [here](https://github.com/arendst/Tasmota/blob/development/tasmota/berry/examples/)
+Soon you'll be able to personalize code with [Berry language](https://tasmota.github.io/docs/Berry/). Check out some Berry samples [here](https://github.com/arendst/Tasmota/blob/development/tasmota/berry/examples/)
 
+You can do that going to Berry console from Tasmota WEB user interface.
 
-For example driving RGB Led function of Power consumption
+As an example, follow is driving on board RGB Led function of Power consumption (low green then going to red when reaching maximum current of your contract)
 
 ```python
 #-
@@ -113,33 +114,32 @@ runcolor()
 ```
 
 
-## Tasmota templates
+### Tasmota templates
 
 Use the following templates depending on version of shield and ESP board
 
-### Shield Version 1.1
+#### Shield Version 1.1
 
-
-#### ESP8266
+ESP8266
 ```
 {"NAME":"Wemos Teleinfo","GPIO":[1,1,1,1,640,608,1,1,1,5152,1,1,1,1],"FLAG":0,"BASE":18}
 ```
 
-#### ESP32
+ESP32
 ```
 {"NAME":"Wemos Teleinfo32","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,5632,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
 
-### Shield Version 1.0
+#### Shield Version 1.0
 
 Teleinfo RX is on GPIO3 for each board
 
-#### ESP8266
+ESP8266
 ```
 {"NAME":"TICShield","GPIO":[1,1,1,5152,640,608,1,1,1,1,1376,1,1,1],"FLAG":0,"BASE":18}
 ```
 
-#### ESP32
+ESP32
 ```
 {"NAME":"TICShield32","GPIO":[1,1,1,5632,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,1,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
