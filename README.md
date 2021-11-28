@@ -20,7 +20,7 @@ Since price difference between ESP32 and ESP8266 boards is so small, to be able 
 - Classic I2C 128x64 OLED or sensors connector
 - pad to solder components if needed to
 
-WeMos provide 3 D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini Pro][22].
+WeMos provide three types of D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini Pro][22] and also new [MH et Live ESP32 Mini Kit][23]
 
 # Detailed Description
 
@@ -36,9 +36,9 @@ Wiring on the WeMos Teleinfo shield
 | I2C SDL      |  GPIO22 | GPIO5   |
 | OnBoard LED  |  GPIO22 | GPIO16  |
 
-You can change default Rx to GPIO3 with solder pad `tic-rx`, but in this case, you need to cut the default trace and put solder between center pad and IO3, It's for advanced users, do it only if you need it and if you know what you are doing.
+You can change default Rx to `GPIO3` with solder pad `tic-rx`, but in this case, you need to cut the default trace and put solder between center pad and `IO3`, It's for advanced users, do it only if you need it and if you know what you are doing.
 
-Default wiring on the ESP8266 Mini D1, ESP32 Mini Dev board
+Default wiring on the ESP8266 Mini D1, [ESP32 Mini Dev board][23]
 
 | Pin Function   | ESP32   | ESP8266 |
 |  :---          |  :---:  |  :---:  |
@@ -55,7 +55,7 @@ Default wiring on the ESP8266 Mini D1, ESP32 Mini Dev board
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-top.png" alt="Top" width="40%" height="40%">&nbsp;
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-bot.png" alt="Bottom" width="40%" height="40%">
 
-# Assembled boards (V1.0)
+# Assembled boards
 
 Here boards connected to MH ET Live ESP32 Mini Kit
 
@@ -129,8 +129,8 @@ See news and other projects on my [blog][2]
  
 [2]: https://hallard.me
 
-[20]: https://wiki.wemos.cc/products:d1:d1_mini_lite
-[21]: https://wiki.wemos.cc/products:d1:d1_mini
-[22]: d1_mini_prohttps://wiki.wemos.cc/products:d1:
+[20]: https://www.wemos.cc/en/latest/d1/d1_mini_lite.html
+[21]: https://www.wemos.cc/en/latest/d1/d1_mini.html
+[22]: https://www.smart-prototyping.com/Mini-D1-PRO-Development-Board-ESP8266-4M-16M
 [23]: https://www.az-delivery.de/fr/products/esp32-d1-mini
 [24]: https://www.tindie.com/products/25467/
