@@ -38,7 +38,7 @@ Wiring on the WeMos Teleinfo shield
 
 You can change default Rx to `GPIO3` with solder pad `tic-rx`, but in this case, you need to cut the default trace and put solder between center pad and `IO3`, It's for advanced users, do it only if you need it and if you know what you are doing.
 
-Default wiring on the ESP8266 Mini D1, [ESP32 Mini Dev board][23]
+Default wiring on [ESP8266 Mini D1][21] or [ESP32 Mini Dev board][23]
 
 | Pin Function   | ESP32   | ESP8266 |
 |  :---          |  :---:  |  :---:  |
@@ -57,7 +57,7 @@ Default wiring on the ESP8266 Mini D1, [ESP32 Mini Dev board][23]
 
 # Assembled boards
 
-Here boards connected to MH ET Live ESP32 Mini Kit
+Here boards connected to Default wiring on [ESP32 Mini Dev board][23]
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-top.png" width="40%" height="40%" alt="WeMos Teleinfo Assembled TOP">&nbsp;
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-bot.png" width="40%" height="40%" alt="WeMos Teleinfo Assembled Bottom">
@@ -66,7 +66,7 @@ Here boards connected to MH ET Live ESP32 Mini Kit
 
 Nothing complicated, just use headers. I suggest to use the small ones I sell with shield on Tindie, takes less place and you can either fix for life with just one part of the header soldered on both shield and ESP32.
 
-Here boards connected to MH ET Live ESP32 Mini Kit
+Here boards connected to [ESP32 Mini Dev board][23]
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-shield.png" width="40%" height="40%">&nbsp;
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-esp32.png" width="40%" height="40%">
@@ -77,6 +77,7 @@ Here boards connected to MH ET Live ESP32 Mini Kit
 ## Tasmota
 
 I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firmware. 
+
 Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/)
 
 ## Tasmota templates
@@ -86,12 +87,12 @@ Use the following templates depending on version of shield and ESP board
 ### Shield Version 1.1
 
 
-ESP8266
+#### ESP8266
 ```
 {"NAME":"Wemos Teleinfo","GPIO":[1,1,1,1,640,608,1,1,1,5152,1,1,1,1],"FLAG":0,"BASE":18}
 ```
 
-ESP32
+#### ESP32
 ```
 {"NAME":"Wemos Teleinfo32","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,5632,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
@@ -100,12 +101,12 @@ ESP32
 
 Teleinfo RX is on GPIO3 for each board
 
-ESP8266
+#### ESP8266
 ```
 {"NAME":"TICShield","GPIO":[1,1,1,5152,640,608,1,1,1,1,1376,1,1,1],"FLAG":0,"BASE":18}
 ```
 
-ESP32
+#### ESP32
 ```
 {"NAME":"TICShield32","GPIO":[1,1,1,5632,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,1,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
@@ -117,9 +118,9 @@ ESP32
 This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/)    
 If you want to do commercial stuff with this project, please contact [CH2i company](https://ch2i.eu/en#support) so we can organize an simple agreement.
 
-# order 
+# Lazy building your own? 
 
-You can order this shield fully assembled with some options or not on [tindie][24]
+You can order this shield fully assembled with some extra on [tindie][24]
 
 <a href="https://www.tindie.com/products/25467/"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-mediums.png" alt="I sell on Tindie" width="150" height="78"></a>
 
