@@ -1,6 +1,6 @@
 # Basic WeMos ESP8266/ESP32 Teleinfo Shield
 
-This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or [MH et Live ESP32 Mini Kit][23]. Take care the check wiring, because there is a lot of clone boards so please be sure to order the correct ones. If you want to be sure you can add it on your Tindie shield order, in bonus it will be flashed with tasmota teleinfo firmware.
+This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or [MH et Live ESP32 Mini Kit][23]. Take care the check wiring, because there is a lot of clone boards so please be sure to order the correct ones. If you want to be sure you can add it as option when you order this shield on [tindie][24], in bonus it will be flashed with tasmota teleinfo firmware.
 
 Since price difference between ESP32 and ESP8266 boards is so small, to be able to use all future features such as Tamota with TLS, Berry language or even tasmota new applications, I strongly suggest to use with ESP32 only. In the meanwhilen due to lack of ressources and Serial for debug (when using teleinfo), **no support for ESP8266 will be provided**. Of course it works fine, but I spent too much time each time to reproduce and track issues so I let it behind for now to focus on ESP32.  
 
@@ -36,12 +36,14 @@ Wiring on the WeMos Teleinfo shield
 | I2C SDL      |  GPIO22 | GPIO5   |
 | OnBoard LED  |  GPIO22 | GPIO16  |
 
+You can change default Rx to GPIO3 with solder pad `tic-rx`, but in this case, you need to cut the default trace and put solder between center pad and IO3, It's for advanced users, do it only if you need it and if you know what you are doing.
+
 Default wiring on the ESP8266 Mini D1, ESP32 Mini Dev board
 
 | Pin Function   | ESP32   | ESP8266 |
 |  :---          |  :---:  |  :---:  |
-| OnBoard LED    |  GPIO22 | GPIO16  |
-| OnBoard Button |  GPIO22 | GPIO16  |
+| OnBoard LED    |  GPIO2 | GPIO16  |
+| OnBoard Button |  GPIO0 | GPIO16  |
 
 
 # Schematics  
@@ -117,7 +119,9 @@ If you want to do commercial stuff with this project, please contact [CH2i compa
 
 # order 
 
-you can order assembled board on [tindie](https://www.tindie.com/products/hallard/wemos-teleinfo/)
+You can order this shield fully assembled with some options or not on [tindie][24]
+
+<a href="https://www.tindie.com/products/25467/"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-mediums.png" alt="I sell on Tindie" width="150" height="78"></a>
 
 # Misc
 
@@ -129,3 +133,4 @@ See news and other projects on my [blog][2]
 [21]: https://wiki.wemos.cc/products:d1:d1_mini
 [22]: d1_mini_prohttps://wiki.wemos.cc/products:d1:
 [23]: https://www.az-delivery.de/fr/products/esp32-d1-mini
+[24]: https://www.tindie.com/products/25467/
