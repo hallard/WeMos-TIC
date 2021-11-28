@@ -87,7 +87,7 @@ Soon you'll be able to personalize code with some examples with [Berry language]
 
 For example driving RGB Led function of Power consumption
 
-```berry
+```python
 #-
 # example of using Berry script to change the led color
 # accordingly to power consumption
