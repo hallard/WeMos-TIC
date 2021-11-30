@@ -84,7 +84,35 @@ Please check Teleinfo official tasmota [documentation](https://tasmota.github.io
 
 Tasmota team now provide unofficial build that follow developement branch, this mean you always have an up to date build with latest code available. Of course we added Teleinfo (ESP8266 and ESP32) builds in this process. 
 
-And as a cherry on the cake, easy flasher tools (web version and executable one) will present these firmware so you are able to flash teleinfo firmware in less than 1 minute. You can check detail [here](https://github.com/Jason2866/Tasmota-specials)
+And as a cherry on the cake, easy flasher tools (web version and executable one) will present these firmware so you are able to flash teleinfo firmware in less than 1 minute. You can check detail [here](https://github.com/Jason2866/Tasmota-specials) but here how to do that.
+
+- Launch [Web Flasher here](https://jason2866.github.io/Tasmota-specials/) 
+- Select Teleinfo (flash will auto detect if you need ESP8266 or ESP32 and will flash the correct one)
+- Select Serial port, and click ìnstall`
+
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-web_flasher.png">
+
+Once done somethingn like that
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-web_flasher_ok.png">
+
+After Flash you should now see a new access point named `tasmota_aabbcc_xxxx` where you can connec to.
+
+Alternatively, if you connect serial console and reset the device you should see Serial logs like that
+```
+00:00:00.003 HDW: ESP32-D0WDQ6 
+00:00:00.037 UFS: FlashFS mounted with 308 kB free
+00:00:00.109 CFG: Loaded from File, Count 12
+00:00:00.124 QPC: Count 1
+00:00:00.257 CFG: no '*.autoconf' file found
+00:00:00.263 BRY: Berry initialized, RAM used=3620
+00:00:00.282 BRY: no 'preinit.be'
+00:00:00.291 Project tasmota - Tasmota Version 10.0.0.3(teleinfo)-2_0_1_1(2021-11-30T14:22:47)
+00:00:00.379 BRY: no 'autoexec.be'
+00:00:00.447 WIF: WifiManager active for 3 minutes
+00:00:01.139 HTP: Web server active on tasmota-090F8C-3980 with IP address 192.168.4.1
+00:00:06.827 QPC: Reset
+```
+
 
 ### Berry Scripting (ESP32 Only)
 
