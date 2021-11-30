@@ -88,14 +88,15 @@ And as a cherry on the cake, easy flasher tools (web version and executable one)
 
 - Launch [Web Flasher here](https://jason2866.github.io/Tasmota-specials/) 
 - Select Teleinfo (flash will auto detect if you need ESP8266 or ESP32 and will flash the correct one)
-- Select Serial port, and click ìnstall`
+- Select Serial port, and click `install`
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-web_flasher.png">
 
-Once done somethingn like that
+Once done something like that
+
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-web_flasher_ok.png">
 
-After Flash you should now see a new access point named `tasmota_aabbcc_xxxx` where you can connec to.
+After flashed, you should now see a new access point named `tasmota_aabbcc_xxxx` where you can connect to configure your device.
 
 Alternatively, if you connect serial console and reset the device you should see Serial logs like that
 ```
@@ -112,7 +113,6 @@ Alternatively, if you connect serial console and reset the device you should see
 00:00:01.139 HTP: Web server active on tasmota-090F8C-3980 with IP address 192.168.4.1
 00:00:06.827 QPC: Reset
 ```
-
 
 ### Berry Scripting (ESP32 Only)
 
