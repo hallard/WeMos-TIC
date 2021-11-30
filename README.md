@@ -80,6 +80,12 @@ I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firm
 
 Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/) so see how to configure your device depending on smart mater and what options you need.
 
+### Unofficial builds
+
+Tasmota team now provide unofficial build that follow developement branch, this mean you always have an up to date build with latest code available. Of course we added Teleinfo (ESP8266 and ESP32) builds in this process. 
+
+And as a cherry on the cake, easy flasher tools (web version and executable one) will present these firmware so you are able to flash teleinfo firmware in less than 1 minute. You can check detail [here](https://github.com/Jason2866/Tasmota-specials)
+
 ### Berry Scripting (ESP32 Only)
 
 Soon you'll be able to personalize code with [Berry language](https://tasmota.github.io/docs/Berry/). Check out some Berry samples [here](https://github.com/arendst/Tasmota/blob/development/tasmota/berry/examples/)
