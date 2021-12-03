@@ -78,13 +78,14 @@ Here boards connected to [ESP32 Mini Dev board][23]
 
 I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firmware. 
 
-Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/) so see how to configure your device depending on smart mater and what options you need.
+Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/) so see how to configure your device depending on smartmeter type and what options you need.
 
 ### Unofficial builds
 
-Tasmota team now provide unofficial build that follow developement branch, this mean you always have an up to date build with latest code available. Of course we added Teleinfo (ESP8266 and ESP32) builds in this process. 
+Teleinfo is not member of official Tasmota builds. So you need to build your own with `USE_TELEINFO` define. 
+But Tasmota team agreed it's not simple to build for end users, and they now provide unofficial build that follow developement branch, this mean you always have an up to date build with latest code available. Of course we added Teleinfo (ESP8266 and ESP32) builds in this unofficial build process so you have nothing to install and compile/link (building). You can't go easier.
 
-And as a cherry on the cake, easy flasher tools (web version and executable one) will present these firmware so you are able to flash teleinfo firmware in less than 1 minute. You can check detail [here](https://github.com/Jason2866/Tasmota-specials) but here how to do that.
+And as a cherry on the cake, easy flasher tools (web version and executable one) will present Teleinfo firmware so you are able to flash teleinfo firmware in less than 1 minute. You can check detail [here](https://github.com/Jason2866/Tasmota-specials) but here how to do that.
 
 - Launch [Web Flasher here](https://jason2866.github.io/Tasmota-specials/) 
 - Select Teleinfo (flash will auto detect if you need ESP8266 or ESP32 and will flash the correct one)
@@ -96,7 +97,7 @@ Once done something like that
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-web_flasher_ok.png">
 
-After flashed, you should now see a new access point named `tasmota_aabbcc_xxxx` where you can connect to configure your device.
+After flashed, you should now see a new access point named `tasmota_aabbcc_xxxx` where you can connect to configure your WiFi for the device to connect on.
 
 Alternatively, if you connect serial console and reset the device you should see Serial logs like that
 ```
@@ -114,12 +115,18 @@ Alternatively, if you connect serial console and reset the device you should see
 00:00:06.827 QPC: Reset
 ```
 
+If you want to deep into this process or just curious, you can check out it's (here)[https://github.com/Jason2866/Tasmota-specials]
+
+### Autoconfig
+
+Another awesome feature of Tasmota is the ability to download configuration profile, and guess what, we done it for this shield, just go to configuration option, select Autoconfig and then choose in the list `Wemos Teleinfo` and here you are, ne need to copy/paste template, it's done by autoconfig.
+If you want to deep into this process or just curious, you can check out it's (here)[https://github.com/tasmota/autoconf]
+
 ### Berry Scripting (ESP32 Only)
 
-Soon you'll be able to personalize code with [Berry language](https://tasmota.github.io/docs/Berry/). Check out some Berry samples [here](https://github.com/arendst/Tasmota/blob/development/tasmota/berry/examples/)
+Now you can personalize code with [Berry language](https://tasmota.github.io/docs/Berry/). Check out some Berry samples [here](https://github.com/arendst/Tasmota/blob/development/tasmota/berry/examples/)
 
-You can do that going to Berry console from Tasmota WEB user interface.
-
+You can do that by going to Berry console from Tasmota WEB user interface.
 
 #### Drive RGB LED depending on actual power
 
@@ -150,14 +157,13 @@ end
 runcolor()
 ```
 
-
 #### Send data to Emoncms
 
-What's magic with Berry is the ability to do basic stuff with data, in this example we will intercept MQTT send message by Energy driver, do some calc and send data to Emoncms but also to drive RGB Led from green (low load) to Red (approach max subscription)
+What's magic with Berry is the ability to do basic stuff with data, in this example we will intercept MQTT send message by Energy driver, do some calc and send data to Emoncms but also to drive RGB Led from Green (low load) to Red (approach max subscription)
 
-Modifiy API key with your, and copy paste the following code into Berry Console test and validate all is okay for you.
+Modifiy API key with your, and copy paste the following code into Berry Console. Tst and validate if all is okay for you.
 
-Once all is fine, you paste the code into a file named `autoexec.be` on the Tasmota Filesystem so it will be executed on Tasmota start.
+Once all is fine, you paste the code into a file named `autoexec.be` on the Tasmota Filesystem so it will be executed each time Tasmota device starting.
 
 ```python
 import json
@@ -174,7 +180,7 @@ def setcolor(iinst, isousc)
 end
 
 def rule_tic(value, trigger)
-  # Got Heures Creuses contract so I will calulate total consumption
+  # Got Heures Creuses contract so I will calculate total consumption
   # adding Heures Creuses (HCHC) + Heures Pleines (HCHP) and create new value for emoncms 
   # Change label depending on name for your contract type
   var htot = value['HCHP'] + value['HCHC']
@@ -209,7 +215,7 @@ tasmota.add_rule("TIC",rule_tic)
 
 ### Tasmota templates
 
-Use the following templates depending on version of shield and ESP board
+Use the following templates depending on version of shield and ESP board (but I strongly suggest using autoconfig if you have a ESP32 board)
 
 #### Shield Version 1.1
 
@@ -220,7 +226,7 @@ ESP8266
 
 ESP32
 ```
-{"NAME":"Wemos Teleinfo32","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,5632,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
+{"NAME":"Wemos Teleinfo","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,5632,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
 
 #### Shield Version 1.0
