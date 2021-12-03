@@ -120,6 +120,9 @@ Soon you'll be able to personalize code with [Berry language](https://tasmota.gi
 
 You can do that going to Berry console from Tasmota WEB user interface.
 
+
+#### Drive RGB LED depending on actual power
+
 Here is a Berry example, goal is to follow real time consumption driving on board RGB Led depending on current Power consumption (low green then going to red when reaching maximum current of your contract)
 
 ```python
@@ -147,6 +150,62 @@ end
 runcolor()
 ```
 
+
+#### Send data to Emoncms
+
+What's magic with Berry is the ability to do basic stuff with data, in this example we will intercept MQTT send message by Energy driver, do some calc and send data to Emoncms but also to drive RGB Led from green (low load) to Red (approach max subscription)
+
+Modifiy API key with your, and copy paste the following code into Berry Console test and validate all is okay for you.
+
+Once all is fine, you paste the code into a file named `autoexec.be` on the Tasmota Filesystem so it will be executed on Tasmota start.
+
+```python
+import json
+
+var api_url = "https://emoncms.org/input/post"
+var api_key = "YOUR_EMON_API_WRITE_KEY"
+var node_name = "NODE_NAME"
+
+def setcolor(iinst, isousc)
+  var red = tasmota.scale_uint(iinst, 0, isousc, 0, 255)
+  var green = 255 - red
+  var channels = [red, green, 0]
+  light.set({"channels":channels, "bri":64, "power":true})
+end
+
+def rule_tic(value, trigger)
+  # Got Heures Creuses contract so I will calulate total consumption
+  # adding Heures Creuses (HCHC) + Heures Pleines (HCHP) and create new value for emoncms 
+  # Change label depending on name for your contract type
+  var htot = value['HCHP'] + value['HCHC']
+  # Create new value HTOT converted to kWH
+  value['HTOT'] = htot / 1000.0
+  # Calculate current percent Load 
+  var iinst = value['IINST']
+  var isousc= value['ISOUSC']
+  if iinst != nil && isousc != nil 
+    # Drive RGB LED
+    setcolor(iinst, isousc)
+    if isousc > 0
+      load = 100 * iinst / isousc
+      value['LOAD'] = load
+    end
+  end
+  # Convert JSON object to string 
+  var obj_json = json.dump(value)
+  # Create URL to call
+  var param="?fulljson="+obj_json + "&node="+node_name + "&apikey="+api_key 
+  # Post Data to EMONCMS
+  var cl = webclient()
+  cl.begin( api_url + param)
+  var r =  cl.GET()
+  print(r, load, param) 
+end
+
+# Callback on each MQTT interception
+tasmota.add_rule("TIC",rule_tic)
+
+```
 
 ### Tasmota templates
 
