@@ -115,12 +115,12 @@ Alternatively, if you connect serial console and reset the device you should see
 00:00:06.827 QPC: Reset
 ```
 
-If you want to deep into this process or just curious, you can check out it's (here)[https://github.com/Jason2866/Tasmota-specials]
+If you want to deep into this process or just curious, you can check out it's [here](https://github.com/Jason2866/Tasmota-specials)
 
 ### Autoconfig
 
 Another awesome feature of Tasmota is the ability to download configuration profile, and guess what, we done it for this shield, just go to configuration option, select Autoconfig and then choose in the list `Wemos Teleinfo` and here you are, ne need to copy/paste template, it's done by autoconfig.
-If you want to deep into this process or just curious, you can check out it's (here)[https://github.com/tasmota/autoconf]
+If you want to deep into this process or just curious, you can check out it's [here](https://github.com/tasmota/autoconf)
 
 ### Berry Scripting (ESP32 Only)
 
