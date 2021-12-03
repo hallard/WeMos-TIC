@@ -117,7 +117,7 @@ Alternatively, if you connect serial console and reset the device you should see
 
 If you want to deep into this process or just curious, you can check out it's [here](https://github.com/Jason2866/Tasmota-specials)
 
-### Autoconfig
+### Autoconf (ESP32 Only)
 
 Another awesome feature of Tasmota is the ability to download configuration profile, and guess what, we done it for this shield, just go to configuration option, select Autoconfig and then choose in the list `Wemos Teleinfo` and here you are, ne need to copy/paste template, it's done by autoconfig.
 If you want to deep into this process or just curious, you can check out it's [here](https://github.com/tasmota/autoconf)
@@ -215,7 +215,7 @@ tasmota.add_rule("TIC",rule_tic)
 
 ### Tasmota templates
 
-Use the following templates depending on version of shield and ESP board (but I strongly suggest using autoconfig if you have a ESP32 board)
+Use the following templates depending on version of shield and ESP board (but I strongly suggest using autoconf if you have a ESP32 board)
 
 #### Shield Version 1.1
 
