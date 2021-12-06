@@ -117,6 +117,14 @@ Alternatively, if you connect serial console and reset the device you should see
 
 If you want to deep into this process or just curious, you can check out it's [here](https://github.com/Jason2866/Tasmota-specials)
 
+:memo: If you have some issues flashing with Web Flasher, do not hesitate to use another awesome tool [ESP Flasher](https://github.com/Jason2866/ESP_Flasher), with this one you can see exactly what's going on in case of issue because it has built in console. Usefull also after reboot of the device because console still active. This is the one I'm using day by day. In this case you need to download firmware to flash first [here](https://github.com/Jason2866/Tasmota-specials/tree/firmware/firmware/tasmota/other). Download firmware `tasmota-teleinfo`
+
+
+You can take a look on `autoconf` [folder](https://github.com/tasmota/autoconf/tree/main/raw/esp32/Wemos_Teleinfo) to see some of init commands used on ESP32. For ESP8266 you can copy content of `autoexec.bat` and manually apply to you ESP8266 teleinfo.
+
+:memo: Don't forget to reset Energy counters on first boot with console command `EnergyTotal 0` if you have erratic values. 
+
+
 ### Autoconf (ESP32 Only)
 
 Another awesome feature of Tasmota is the ability to download configuration profile, and guess what, we done it for this shield, just go to configuration option, select Autoconfig and then choose in the list `Wemos Teleinfo` and here you are, ne need to copy/paste template, it's done by autoconfig.
@@ -157,7 +165,7 @@ end
 runcolor()
 ```
 
-#### Send data to Emoncms
+#### Send data to Emoncms with Berry (ESP32 only)
 
 What's magic with Berry is the ability to do basic stuff with data, in this example we will intercept MQTT send message by Energy driver, do some calc and send data to Emoncms but also to drive RGB Led from Green (low load) to Red (approach max subscription)
 
@@ -221,7 +229,7 @@ Use the following templates depending on version of shield and ESP board (but I 
 
 ESP8266
 ```
-{"NAME":"Wemos Teleinfo","GPIO":[1,1,1,1,640,608,1,1,1,5152,1,1,1,1],"FLAG":0,"BASE":18}
+{"NAME":"Wemos Teleinfo","GPIO":[1,1,1,1,640,608,1,1,1,5152,1376,1,1,1],"FLAG":0,"BASE":18}
 ```
 
 ESP32
