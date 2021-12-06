@@ -123,6 +123,31 @@ You can take a look on `autoconf` [folder](https://github.com/tasmota/autoconf/t
 :memo: Don't forget to reset Energy counters on first boot with console command `EnergyTotal 0` if you have erratic values. 
 
 
+### I2C Display
+
+You can add fancy I2C display (or even I2C sensors), take care of wiring of the display. They are not all usin the same order wiring the 4 pins on I2C connector. You need to use one with this order `GND VCC SDL SDA`. Since I2C VCC is conencted to 3.3V, your I2C device is compatible with 3.3V or 5V ones (They all have shifter since majorty of sensors works at 3.3V)
+
+Then with tasmota you need to select correct one, in my example below it's an SHT1106 128x64 so config is (use only one time). Pleasy check Tasmota documentation for [display](https://tasmota.github.io/docs/Displays/) and associaed [commands](https://tasmota.github.io/docs/Commands/#displays).
+
+```
+DisplayMode 2
+; 2 for SSD1306 and 7 for SH1106
+DisplayModel 2
+displaycols 21
+displayrows 8
+```
+
+Don't forget to toggle ON on tasmota WEB UI since it's like a device. If not nothing will be displayed. You can also check the OLED presence using command `i2cScan` from console, something loke below sounds good, seen on `0x3c`
+
+```
+13:09:39.490 CMD: i2cscan
+13:09:39.531 MQT: stat/tasmota_EF58A0/RESULT = {"I2CScan":"Device(s) found at 0x3c"}
+```
+
+And here is a picture of the whole working.
+
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-oled.png">
+
 ### Autoconf (ESP32 Only)
 
 Another awesome feature of Tasmota is the ability to download configuration profile, and guess what, we done it for this shield, just go to configuration option, select Autoconfig and then choose in the list `Wemos Teleinfo` and here you are, ne need to copy/paste template, it's done by autoconfig.
