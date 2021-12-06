@@ -24,9 +24,7 @@ WeMos provide three types of D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini P
 
 # Detailed Description
 
-Look at the schematics for more informations.
-
-Wiring on the WeMos Teleinfo shield
+Look at the schematics for more informations, easy to understand. Wiring on the WeMos Teleinfo shield is as follow:
 
 | Pin Function | ESP32   | ESP8266 |
 |  :---        |  :---:  |  :---:  |
@@ -46,7 +44,7 @@ Default wiring on [ESP8266 Mini D1][21] or [ESP32 Mini Dev board][23]
 | OnBoard Button |  GPIO0 | GPIO16  |
 
 
-# Schematics  
+# Schematics
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-sch.png">
 
@@ -57,26 +55,27 @@ Default wiring on [ESP8266 Mini D1][21] or [ESP32 Mini Dev board][23]
 
 # Assembled boards
 
-Here boards connected to Default wiring on [ESP32 Mini Dev board][23]
+Here an example of boards connected with wiring on [ESP32 Mini Dev board][23]
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-top.png" width="40%" height="40%" alt="WeMos Teleinfo Assembled TOP">&nbsp;
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-assembled-bot.png" width="40%" height="40%" alt="WeMos Teleinfo Assembled Bottom">
 
 # Assembling
 
-Nothing complicated, just use headers. I suggest to use the small ones I sell with shield on Tindie, takes less place and you can either fix for life with just one part of the header soldered on both shield and ESP32.
+Nothing complicated, just use and solder headers. I suggest to use the small ones I sell with shield on Tindie, takes less place and you can either fix for life with just one part of the header soldered on both shield and ESP32.
 
 Here boards connected to [ESP32 Mini Dev board][23]
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-shield.png" width="40%" height="40%">&nbsp;
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-esp32.png" width="40%" height="40%">
 
-
 # Firmware 
+
+You can write your own and use with [LibTeleinfo](https://github.com/hallard/LibTeleinfo) library I wrote if you want to get rid of driving teleinfo stuff (chekout some [examples](ttps://github.com/hallard/LibTeleinfo/tree/master/examples)).
 
 ## Tasmota
 
-I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firmware. 
+But I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firmware, all is already done and well done.
 
 Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/) so see how to configure your device depending on smartmeter type and what options you need.
 
@@ -118,7 +117,6 @@ Alternatively, if you connect serial console and reset the device you should see
 If you want to deep into this process or just curious, you can check out it's [here](https://github.com/Jason2866/Tasmota-specials)
 
 :memo: If you have some issues flashing with Web Flasher, do not hesitate to use another awesome tool [ESP Flasher](https://github.com/Jason2866/ESP_Flasher), with this one you can see exactly what's going on in case of issue because it has built in console. Usefull also after reboot of the device because console still active. This is the one I'm using day by day. In this case you need to download firmware to flash first [here](https://github.com/Jason2866/Tasmota-specials/tree/firmware/firmware/tasmota/other). Download firmware `tasmota-teleinfo`
-
 
 You can take a look on `autoconf` [folder](https://github.com/tasmota/autoconf/tree/main/raw/esp32/Wemos_Teleinfo) to see some of init commands used on ESP32. For ESP8266 you can copy content of `autoexec.bat` and manually apply to you ESP8266 teleinfo.
 
@@ -250,6 +248,10 @@ ESP32
 ```
 {"NAME":"TICShield32","GPIO":[1,1,1,5632,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,1,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
+
+# Support and discussion
+
+If you have any issue or just want to discuss on this project, please use community [forum](https://community.ch2i.eu/category/19/wemos-teleinfo)
 
 # License
 
