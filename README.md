@@ -28,7 +28,7 @@ Look at the schematics for more informations, easy to understand. Wiring on the 
 
 | Pin Function | ESP32   | ESP8266 |
 |  :---        |  :---:  |  :---:  |
-| Téléinfo Rx  |  GPIO32 | GPIO13  |
+| Téléinfo Rx  |  GPIO23 | GPIO13  |
 | RGB Led      |  GPIO18 | GPIO14  |
 | I2C SDA      |  GPIO21 | GPIO4   |
 | I2C SDL      |  GPIO22 | GPIO5   |
