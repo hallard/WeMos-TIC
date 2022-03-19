@@ -71,10 +71,15 @@ Here boards connected to [ESP32 Mini Dev board][23]
 
 # 3D Print enclosure
 
-@barbudor was kind enough to build and share awesome 3D enclosure for this shield. you can find `stl` file to print your own [here](3dprinted_enclosure) and see pictures below
+@barbudor was kind enough to build and share awesome 3D enclosure for this shield. you can find `stl` file to print your own [here](3dprinted_enclosure). see pictures below
 
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC_enclosure.png">
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC_inside_enclosure.png">
+
+:warning: This enclosure fit perfelctly shield connected with WemMos ESP32 or D1 Mini ESP8266 **only when assembled with small headers**
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC_small_headers.png">
+
+You can add these headers when you order this shield on my [tindie store][24]
 
 # Firmware 
 
