@@ -69,6 +69,14 @@ Here boards connected to [ESP32 Mini Dev board][23]
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-shield.png" width="40%" height="40%">&nbsp;
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-soldering-esp32.png" width="40%" height="40%">
 
+# 3D Print enclosure
+
+@barbudor was kind enough to build and share awesome 3D enclosure for this shield. you can find `stl` file to print your own [here](3dprinted_enclosure) 
+
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC_enclosure.png" width="40%" height="40%">
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC_inside_enclosure.png" width="40%" height="40%">&nbsp;
+
+
 # Firmware 
 
 You can write your own and use with [LibTeleinfo](https://github.com/hallard/LibTeleinfo) library I wrote if you want to get rid of driving teleinfo stuff (chekout some [examples](ttps://github.com/hallard/LibTeleinfo/tree/master/examples)).
