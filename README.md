@@ -39,16 +39,15 @@ Look at the schematics for more informations, easy to understand. Wiring on the 
 | RGB Led      |  GPIO18 | GPIO14  | GPIO7    | GPIO2    |
 | I2C SDA      |  GPIO21 | GPIO4   | GPIO33   | GPIO8    |
 | I2C SDL      |  GPIO22 | GPIO5   | GPIO35   | GPIO10   |
-| OnBoard LED  |  GPIO2  | GPIO16  | GPIO15   | GPIO7    |
 
 You can change default Rx to `GPIO3` with solder pad `tic-rx`, but in this case, you need to cut the default trace and put solder between center pad and `IO3`, It's for advanced users, do it only if you need it and if you know what you are doing.
 
 Default wiring on [ESP8266 Mini D1][21], [ESP32 Mini Dev board][23], [ESP32 S2 Mini][25] or [ESP32 C3 Mini][26]
 
-| Pin Function   | ESP32  | ESP8266 | ESP32-S2 | ESP32-C3 |
-|  :---          |  :---: |  :---:  |  :---:  | :---: |
-| OnBoard LED    |  GPIO2 | GPIO16  | GPIO15  | GPIO7 |
-| OnBoard Button |  GPIO0 | GPIO16  |  GPIO0  | GPIO9 |
+| Pin Function    | ESP32  | ESP8266 | ESP32-S2 | ESP32-C3 |
+|  :---           |  :---: |  :---:  |  :---:   |  :---:   |
+| On Board LED    |  GPIO2 | GPIO16  | GPIO15   |  GPIO7   |
+| On Board Button |  GPIO0 | GPIO16  |  GPIO0   |  GPIO9   |
 
 
 # Schematics
