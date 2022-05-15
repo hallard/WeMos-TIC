@@ -1,12 +1,19 @@
-# WeMos Teleinfo ESP8266/ESP32/ESP32-S2 Shield
+# WeMos Teleinfo ESP8266/ESP32/S2/C3 Shield
 
-This shield is used to get French energy meter called Teleinfo data with an [WeMos D1][22] ESP8266 or [MH et Live ESP32 Mini Kit][23] or even new [WeMos Minii S2][25]. Take care the check wiring, because there is a lot of clone boards so please be sure to order the correct ones. If you want to be sure you can add it as option when you order this shield on [tindie][24], in bonus it will be flashed with tasmota teleinfo firmware.
+This shield is used to get French energy meter called Teleinfo data with any of the following boards:
+
+- [WeMos D1 Mini][22] ESP8266
+- [MH et Live ESP32 Mini Kit][23]
+- [WeMos Mini S2][25] 
+- [WeMos Mini C3][26]
+
+Take care the check wiring, because there is a lot of clone boards so please be sure to order the correct ones. If you want to be sure you can add it as option when you order this shield on [tindie][24], in bonus it will be flashed with tasmota teleinfo firmware.
 
 Since price difference between ESP32 and ESP8266 boards is so small, to be able to use all future features such as Tamota with TLS, [Berry language](https://tasmota.github.io/docs/Berry/) or even tasmota new applications, I strongly suggest to use with ESP32 only. In the meanwhilen due to lack of ressources and Serial for debug (when using teleinfo), **no support for ESP8266 will be provided**. Of course it works fine, but I spent too much time each time to reproduce and track issues so I let it behind for now to focus on ESP32.  
 
 **New in v1.1**
 
-- Default RX goes to GPIO13 on ESP8266, GPIO23 on ESP32 and GPIO11 on ESP32-S2
+- Default RX goes to GPIO13 on ESP8266, GPIO23 on ESP32 (see other below)
 - Reduded WS2812 RGB Led size, 4.3V powered, better brigtness 
 - Added visual LED on teleinfo receive signal
 - Reverted Signal 3V3 and GND on I2C connector, now "standard" looks more like that
@@ -26,22 +33,22 @@ WeMos provide three types of D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini P
 
 Look at the schematics for more informations, easy to understand. Wiring on the WeMos Teleinfo shield is as follow:
 
-| Pin Function | ESP32   | ESP8266 | ESP32-S2 |
-|  :---        |  :---:  |  :---:  |  :---:   |
-| Téléinfo Rx  |  GPIO23 | GPIO13  | GPIO11   |
-| RGB Led      |  GPIO18 | GPIO14  | GPIO7    |
-| I2C SDA      |  GPIO21 | GPIO4   | GPIO33   |
-| I2C SDL      |  GPIO22 | GPIO5   | GPIO35   |
-| OnBoard LED  |  GPIO2  | GPIO16  | GPIO15   |
+| Pin Function | ESP32   | ESP8266 | ESP32-S2 | ESP32-C3 |
+|  :---        |  :---:  |  :---:  |  :---:   |  :---:   |
+| Téléinfo Rx  |  GPIO23 | GPIO13  | GPIO11   | GPIO4    |
+| RGB Led      |  GPIO18 | GPIO14  | GPIO7    | GPIO2    |
+| I2C SDA      |  GPIO21 | GPIO4   | GPIO33   | GPIO8    |
+| I2C SDL      |  GPIO22 | GPIO5   | GPIO35   | GPIO10   |
+| OnBoard LED  |  GPIO2  | GPIO16  | GPIO15   | GPIO7    |
 
 You can change default Rx to `GPIO3` with solder pad `tic-rx`, but in this case, you need to cut the default trace and put solder between center pad and `IO3`, It's for advanced users, do it only if you need it and if you know what you are doing.
 
-Default wiring on [ESP8266 Mini D1][21], [ESP32 Mini Dev board][23] or [ESP32 S2 Mini board][25]
+Default wiring on [ESP8266 Mini D1][21], [ESP32 Mini Dev board][23], [ESP32 S2 Mini][25] or [ESP32 C3 Mini][26]
 
-| Pin Function   | ESP32  | ESP8266 | ESP32-S2 |
-|  :---          |  :---: |  :---:  |  :---:  |
-| OnBoard LED    |  GPIO2 | GPIO16  | GPIO15  |
-| OnBoard Button |  GPIO0 | GPIO16  |  GPIO0  |
+| Pin Function   | ESP32  | ESP8266 | ESP32-S2 | ESP32-C3 |
+|  :---          |  :---: |  :---:  |  :---:  | :---: |
+| OnBoard LED    |  GPIO2 | GPIO16  | GPIO15  | GPIO7 |
+| OnBoard Button |  GPIO0 | GPIO16  |  GPIO0  | GPIO9 |
 
 
 # Schematics
@@ -272,11 +279,15 @@ ESP32
 {"NAME":"Wemos Teleinfo","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1376,1,1,640,608,5632,1,1,0,1,0,0,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
 
-ESP32-S2
+ESP32-S2-Mini
 ```
 {"NAME":"Wemos Teleinfo","GPIO":[1,1,1,1,1,1,1,1376,1,1,1,5632,1,1,1,1,1,1,1,5632,1,1,640,1,608,1,0,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":1}
 ```
 
+ESP32-C3-Mini
+```
+{"NAME":"Wemos Teleinfo","GPIO":[1,1,1376,1,5632,1,1,288,640,1,608,1,1,1,1376,1,1,640,1,0,1,1],"FLAG":0,"BASE":1}
+```
 
 #### Shield Version 1.0
 
@@ -321,3 +332,4 @@ See news and other projects on my [blog][2]
 [23]: https://www.az-delivery.de/fr/products/esp32-d1-mini
 [24]: https://www.tindie.com/products/25467/
 [25]: https://www.wemos.cc/en/latest/s2/s2_mini.html
+[26]: https://www.wemos.cc/en/latest/c3/c3_mini.html
