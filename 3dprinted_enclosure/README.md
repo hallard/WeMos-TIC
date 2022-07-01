@@ -2,7 +2,7 @@
 by Barbudor
 Designed with TinkerCAD
 
-v1.1
+v1.1 : available here https://www.tinkercad.com/things/gjrSG7AgKoE-mini-d1-esp32-teleinfo-v11
 
 Tested with mini-D1 ESP32 and D1 Mini ESP8266.
 
