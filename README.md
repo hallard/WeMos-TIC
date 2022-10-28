@@ -208,11 +208,13 @@ runcolor()
 
 #### Send data to Emoncms with Berry (ESP32 only)
 
-What's magic with Berry is the ability to do basic stuff with data, in this example we will intercept MQTT send message by Energy driver, do some calc and send data to Emoncms but also to drive RGB Led from Green (low load) to Red (approach max subscription)
+What's magic with Berry is the ability to do basic stuff with data, in this example we will intercept MQTT send message by Energy driver, do some calc and send data to Emoncms every 15 seconds and also to drive RGB Led from Green (low load) to Red (approach max subscription)
 
 Modifiy API key with your, and copy paste the following code into Berry Console. Tst and validate if all is okay for you.
 
 Once all is fine, you paste the code into a file named `autoexec.be` on the Tasmota Filesystem so it will be executed each time Tasmota device starting.
+
+### Mode Historique (contrat heures creuses)
 
 ```python
 import json
@@ -220,6 +222,21 @@ import json
 var api_url = "https://emoncms.org/input/post"
 var api_key = "YOUR_EMON_API_WRITE_KEY"
 var node_name = "NODE_NAME"
+var post_every = 15000 # post evert 15 seconds
+var payload = {}
+
+def send_emoncms()
+  # Convert JSON object to string 
+  var obj_json = json.dump(payload)
+
+  # Create URL to call
+  var param="?fulljson="+obj_json + "&node="+node_name + "&apikey="+api_key 
+  # Post Data to EMONCMS
+  var cl = webclient()
+  cl.begin( api_url + param)
+  var r =  cl.GET()
+  tasmota.set_timer(post_every, send_emoncms)
+end
 
 def setcolor(iinst, isousc)
   var red = tasmota.scale_uint(iinst, 0, isousc, 0, 255)
@@ -228,37 +245,107 @@ def setcolor(iinst, isousc)
   light.set({"channels":channels, "bri":64, "power":true})
 end
 
+# set global payload the field we need
 def rule_tic(value, trigger)
   # Got Heures Creuses contract so I will calculate total consumption
   # adding Heures Creuses (HCHC) + Heures Pleines (HCHP) and create new value for emoncms 
   # Change label depending on name for your contract type
-  var htot = value['HCHP'] + value['HCHC']
+  var htot = value['HCHP'] + value['HCHC'] # mode historique
   # Create new value HTOT converted to kWH
-  value['HTOT'] = htot / 1000.0
+  payload['HTOT'] = htot / 1000.0
   # Calculate current percent Load 
-  var iinst = value['IINST']
-  var isousc= value['ISOUSC']
+  var iinst = value['IINST']  # mode historique
+  var isousc= value['ISOUSC'] # mode historique
+
   if iinst != nil && isousc != nil 
     # Drive RGB LED
     setcolor(iinst, isousc)
     if isousc > 0
       load = 100 * iinst / isousc
-      value['LOAD'] = load
+      payload['LOAD'] = load
     end
   end
+
+  # Set values we need to send to emoncms
+  payload['ADCO']  = value['ADCO']
+  payload['HCHP']  = value['HCHP']
+  payload['HCHC']  = value['HCHC']
+  payload['ISOUSC']= isousc
+  payload['PAPP']  = value['PAPP']
+  payload['IINST'] = iinst
+
+end
+
+# Callback on each MQTT interception
+tasmota.add_rule("TIC",rule_tic)
+# fire 1st post
+tasmota.set_timer(post_every, send_emoncms)
+
+```
+
+
+### Mode Standard (contrat heures creuses)
+
+```python
+import json
+
+var api_url = "https://emoncms.org/input/post"
+var api_key = "YOUR_EMON_API_WRITE_KEY"
+var node_name = "NODE_NAME"
+var post_every = 15000 # post evert 15 seconds
+var payload = {}
+
+def send_emoncms()
   # Convert JSON object to string 
-  var obj_json = json.dump(value)
+  var obj_json = json.dump(payload)
+
   # Create URL to call
   var param="?fulljson="+obj_json + "&node="+node_name + "&apikey="+api_key 
   # Post Data to EMONCMS
   var cl = webclient()
   cl.begin( api_url + param)
   var r =  cl.GET()
-  print(r, load, param) 
+  tasmota.set_timer(post_every, send_emoncms)
+end
+
+def setcolor(iinst, isousc)
+  var red = tasmota.scale_uint(iinst, 0, isousc, 0, 255)
+  var green = 255 - red
+  var channels = [red, green, 0]
+  light.set({"channels":channels, "bri":64, "power":true})
+end
+
+# set global payload the field we need
+def rule_tic(value, trigger)
+  # Got Heures Creuses contract so I will calculate total consumption
+  # Calculate current percent Load 
+  var iinst = value['IRMS1']  
+  var isousc= value['PREF']*5 
+
+  if iinst != nil && isousc != nil 
+    # Drive RGB LED
+    setcolor(iinst, isousc)
+    if isousc > 0
+      load = 100 * iinst / isousc
+      payload['LOAD'] = load
+    end
+  end
+
+  # Here I keep name of historique mode
+  payload['ADCO']  = value['ADSC']
+  payload['HTOT']  = value['EAST'] / 1000 # I need kWh
+  payload['HCHP']  = value['EASF01']
+  payload['HCHC']  = value['EASF02']
+  payload['ISOUSC']= isousc
+  payload['PAPP']  = value['SINSTS']
+  payload['IINST'] = iinst
+
 end
 
 # Callback on each MQTT interception
 tasmota.add_rule("TIC",rule_tic)
+# fire 1st post
+tasmota.set_timer(post_every, send_emoncms)
 
 ```
 
