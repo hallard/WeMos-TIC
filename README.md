@@ -1,4 +1,4 @@
-# WeMos Teleinfo ESP8266/ESP32/S2/C3 Shield
+# WeMos Teleinfo ESP8266/ESP32/S2/C3/S3 Shield
 
 This shield is used to get French energy meter called Teleinfo data with any of the following boards:
 
@@ -6,12 +6,21 @@ This shield is used to get French energy meter called Teleinfo data with any of 
 - [MH et Live ESP32 Mini Kit][23]
 - [WeMos Mini S2][25] 
 - [WeMos Mini C3][26]
+- [WeMos Mini S3][27]
 
 Take care the check wiring, because there is a lot of clone boards so please be sure to order the correct ones. If you want to be sure you can add it as option when you order this shield on [tindie][24], in bonus it will be flashed with tasmota teleinfo firmware.
 
 Since price difference between ESP32 and ESP8266 boards is so small, to be able to use all future features such as Tamota with TLS, [Berry language](https://tasmota.github.io/docs/Berry/) or even tasmota new applications, I strongly suggest to use with ESP32 only. In the meanwhilen due to lack of ressources and Serial for debug (when using teleinfo), **no support for ESP8266 will be provided**. Of course it works fine, but I spent too much time each time to reproduce and track issues so I let it behind for now to focus on ESP32.  
 
-**New in v1.1**
+
+**New in v1.2**
+
+- Changed R3 by adjustable 2K resistor (trimer) to adjust Teleinfo signal sensitivity for Standard/Historique modes
+- Added QWIIC/STEMA I2C classic connector
+- Changed Blue Led resistor to decrease light intensity
+- Placed easy cutting trace to disable Teleinfo Blue LED
+
+**v1.1**
 
 - Default RX goes to GPIO13 on ESP8266, GPIO23 on ESP32 (see other below)
 - Reduded WS2812 RGB Led size, 4.3V powered, better brigtness 
@@ -33,22 +42,24 @@ WeMos provide three types of D1, [D1 Mini Lite][20], [D1 Mini][21] or [D1 Mini P
 
 Look at the schematics for more informations, easy to understand. Wiring on the WeMos Teleinfo shield is as follow:
 
-| Pin Function | ESP32   | ESP8266 | ESP32-S2 | ESP32-C3 |
-|  :---        |  :---:  |  :---:  |  :---:   |  :---:   |
-| Téléinfo Rx  |  GPIO23 | GPIO13  | GPIO11   | GPIO4    |
-| RGB Led      |  GPIO18 | GPIO14  | GPIO7    | GPIO2    |
-| I2C SDA      |  GPIO21 | GPIO4   | GPIO33   | GPIO8    |
-| I2C SDL      |  GPIO22 | GPIO5   | GPIO35   | GPIO10   |
+| Pin Function | ESP32   | ESP8266 | ESP32-S2 | ESP32-C3 | ESP32-S3 |
+|  :---        |  :---:  |  :---:  |  :---:   |  :---:   |  :---:   |
+| Téléinfo Rx  |  GPIO23 | GPIO13  | GPIO11   | GPIO4    | GPIO11   |
+| RGB Led      |  GPIO18 | GPIO14  | GPIO7    | GPIO2    | GPIO12   |
+| I2C SDA      |  GPIO21 | GPIO4   | GPIO33   | GPIO8    | GPIO35   |
+| I2C SCL      |  GPIO22 | GPIO5   | GPIO35   | GPIO10   | GPIO36   |
 
 You can change default Rx to `GPIO3` with solder pad `tic-rx`, but in this case, you need to cut the default trace and put solder between center pad and `IO3`, It's for advanced users, do it only if you need it and if you know what you are doing.
 
-Default wiring on [ESP8266 Mini D1][21], [ESP32 Mini Dev board][23], [ESP32 S2 Mini][25] or [ESP32 C3 Mini][26]
+Default wiring on [ESP8266 Mini D1][21], [ESP32 Mini Dev board][23], [ESP32 S2 Mini][25] or [ESP32 C3 Mini][26] or [ESP32 S3 Mini][27]
 
-| Pin Function    | ESP32  | ESP8266 | ESP32-S2 | ESP32-C3 |
-|  :---           |  :---: |  :---:  |  :---:   |  :---:   |
-| On Board LED    |  GPIO2 | GPIO16  | GPIO15   |  GPIO7   |
-| On Board Button |  GPIO0 | GPIO16  |  GPIO0   |  GPIO9   |
+| Pin Function    | ESP32  | ESP8266 | ESP32-S2 | ESP32-C3 | ESP32-S3 |
+|  :---           |  :---: |  :---:  |  :---:   |  :---:   |  :---:   |
+| On Board LED    |  GPIO2 | GPIO16  | GPIO15   |  GPIO7   |  GPIO47  |
+| On Board Button |  GPIO0 | GPIO16  |  GPIO0   |  GPIO9   |  GPIO0   |
 
+
+Note : On ESP32-S3 the On Board LED is RGB WS2812 (same than on this shield) so to drive Shield LED use IO12 and to drive S3 Led use IO47
 
 # Schematics
 
@@ -96,6 +107,16 @@ You can write your own and use with [LibTeleinfo](https://github.com/hallard/Lib
 But I strongly suggest using amazing [Tasmota](https://tasmota.github.io/docs/) firmware, all is already done and well done.
 
 Please check Teleinfo official tasmota [documentation](https://tasmota.github.io/docs/Teleinfo/) so see how to configure your device depending on smartmeter type and what options you need.
+
+### Nicolas's builds
+
+Nicolas @NicolasBernaerts has made awesome changes on Tasmota to be able to show graph of consumption, history and other great features such has:
+
+- Ecowatt server to publish RTE Ecowatt signals
+- TCP server to live stream teleinfo data
+- FTP server to easily retrieve graph data
+
+You can find more information on his dedicated [repo](https://github.com/NicolasBernaerts/tasmota/tree/master/teleinfo) and also ready made build for all compatible ESP boards.
 
 ### Unofficial builds
 
@@ -276,10 +297,15 @@ def rule_tic(value, trigger)
 
 end
 
-# Callback on each MQTT interception
-tasmota.add_rule("TIC",rule_tic)
-# fire 1st post
-tasmota.set_timer(post_every, send_emoncms)
+def start()
+  # Callback on each frame interception
+  tasmota.add_rule("TIC",rule_tic)
+  # fire 1st post in 5s 
+  tasmota.set_timer(5000, send_emoncms)
+end
+
+# delay start to have time to get full frame
+tasmota.set_timer(10000, start)
 
 ```
 
@@ -342,10 +368,15 @@ def rule_tic(value, trigger)
 
 end
 
-# Callback on each MQTT interception
-tasmota.add_rule("TIC",rule_tic)
-# fire 1st post
-tasmota.set_timer(post_every, send_emoncms)
+def start()
+  # Callback on each frame interception
+  tasmota.add_rule("TIC",rule_tic)
+  # fire 1st post in 5s 
+  tasmota.set_timer(5000, send_emoncms)
+end
+
+# delay start to have time to get full frame
+tasmota.set_timer(10000, start)
 
 ```
 
@@ -374,6 +405,12 @@ ESP32-C3-Mini
 ```
 {"NAME":"Wemos Teleinfo","GPIO":[1,1,1376,1,5632,1,1,288,640,1,608,1,1,1,1376,1,1,640,1,0,1,1],"FLAG":0,"BASE":1}
 ```
+
+ESP32-S3-Mini
+```
+{"NAME":"Wemos Teleinfo","GPIO":[32,1,1,0,0,1,1,1,1,1,1,5632,1376,1,0,1,1,1,1,1,1,1,0,0,640,608,0,0,0,0,0,0,1,1,0,0,1377,0],"FLAG":0,"BASE":1}
+```
+
 
 #### Shield Version 1.0
 
@@ -419,3 +456,5 @@ See news and other projects on my [blog][2]
 [24]: https://www.tindie.com/products/25467/
 [25]: https://www.wemos.cc/en/latest/s2/s2_mini.html
 [26]: https://www.wemos.cc/en/latest/c3/c3_mini.html
+[27]: https://www.wemos.cc/en/latest/s3/s3_mini.html
+
