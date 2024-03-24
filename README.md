@@ -63,7 +63,11 @@ Note : On ESP32-S3 the On Board LED is RGB WS2812 (same than on this shield) so 
 
 # Schematics
 
+## V1.2
 <img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-sch.png">
+
+## V1.1
+<img src="https://github.com/hallard/WeMos-TIC/raw/master/pictures/WeMos-TIC-v11-sch.png">
 
 # Boards (V1.1)
 
